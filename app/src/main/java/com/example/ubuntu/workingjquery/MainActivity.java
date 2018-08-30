@@ -15,10 +15,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
     String url = "http://192.168.1.161/webexample/select.php"; //localhost webservices
+    String post_url = "http://192.168.1.161/webexample/signinform.php";
     AQuery aQuery;
     ListView listView;
     @Override
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            fetchData();
+           postData();
             }
         });
     }
@@ -76,5 +78,21 @@ public class MainActivity extends AppCompatActivity {
 listView.setAdapter(new UserListAdapter(MainActivity.this, arrayList));
         }
     });
+    }
+
+    public void postData(){ //Hashmap is require to send data to server as ArrayAdapter doesn't work here.
+        HashMap<String, Object> param = new HashMap<>();
+        param.put("username", "new username");
+        param.put("address", "new address");
+        param.put("email","new email");
+
+        aQuery.ajax(post_url,param,JSONArray.class, new AjaxCallback<JSONArray>(){
+            @Override
+            public void callback(String url, JSONArray object, AjaxStatus status) {
+                super.callback(url, object, status);
+                Log.i("response", "response " + object);
+                fetchData();
+            }
+        });
     }
 }
