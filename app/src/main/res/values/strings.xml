@@ -2,6 +2,7 @@
     <string name="app_name">WorkingJQuery</string>
 
     <string name="url">
+         myjson.com
         https://jsonlint.com/              //copy json code and paste in this url for checking validation of json code
     </string>
     <string name="process">
@@ -11,5 +12,6 @@
     </string>
     <string name="extra">
         github: php
+
     </string>
 </resources>
