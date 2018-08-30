@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">WorkingJQuery</string>
 
+    <string name="url">
+        https://jsonlint.com/              //copy json code and paste in this url for checking validation of json code
+    </string>
     <string name="process">
         1. download AQuery file and past it into the lib dir.
         2. Build -> Edit library and Dependency -> + -> jar -> ok
 
+    </string>
+    <string name="extra">
+        github: php
     </string>
 </resources>
