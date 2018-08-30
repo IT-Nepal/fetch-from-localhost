@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.androidquery.AQuery;
@@ -12,6 +13,8 @@ import com.androidquery.callback.AjaxStatus;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
 	"gender": "",
 	"image": ""*/
 
+//            Arraylist use to show information of multiple user
+            ArrayList<UserInfo> arrayList = new ArrayList<>();
             for(int i = 0; i<array.length(); i++){
                 try{
                     UserInfo info = new UserInfo();
@@ -62,10 +67,13 @@ public class MainActivity extends AppCompatActivity {
                 info.phone = object.getString("phone");
                 info.gender = object.getString("gender");
                 info.image = object.getString("image");
+                arrayList.add(info);
             }catch(Exception e){
             e.printStackTrace();
             }
             } //end of forloop
+
+listView.setAdapter(new UserListAdapter(MainActivity.this, arrayList));
         }
     });
     }
