@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WorkingJQuery</string>
+
+    <string name="process">
+        1. download AQuery file and past it into the lib dir.
+        2. Build -> Edit library and Dependency -> + -> jar -> ok
+
+    </string>
+</resources>
