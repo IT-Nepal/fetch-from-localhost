@@ -11,6 +11,7 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,9 +39,33 @@ public class MainActivity extends AppCompatActivity {
         public void callback(String url, JSONArray array, AjaxStatus status) {
             super.callback(url, array, status);
 
-            Log.i("response", "response" + array
+            Log.i("response", "response" + array);
 
-            );
+            /* "id": "7",
+	"username": "",
+	"password": "",
+	"email": "",
+	"address": "",
+	"phone": "",
+	"gender": "",
+	"image": ""*/
+
+            for(int i = 0; i<array.length(); i++){
+                try{
+                    UserInfo info = new UserInfo();
+                JSONObject object = array.getJSONObject(i);
+                info.id = object.getString("id");
+                info.username = object.getString("username");
+                info.password = object.getString("password");
+                info.email = object.getString("email");
+                info.address = object.getString("address");
+                info.phone = object.getString("phone");
+                info.gender = object.getString("gender");
+                info.image = object.getString("image");
+            }catch(Exception e){
+            e.printStackTrace();
+            }
+            } //end of forloop
         }
     });
     }
